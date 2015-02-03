@@ -26,13 +26,14 @@ class UsersController < ApplicationController
     
     #get
     def edit
+        @id = id_params
         @one_user = User.find( id_params )
     end
 
     #post/put
     def update
         @update_user = User.find( id_params ).update( user_params )
-        if @update_user.save
+        if @update_user
             redirect_to '/'
         else
             flash[:edit_error] = @update_user.errors.full_messages
