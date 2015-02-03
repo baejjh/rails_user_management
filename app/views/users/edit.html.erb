@@ -1,0 +1,35 @@
+<h1>Enter a New User</h1>
+<a href="/">Go back to the main page</a>
+
+<% if flash[:edit_error] %>
+	<% if flash[:edit_error].each do |error| %>
+			<div><%= error %></div>
+		<% end %>
+	<% end %>
+<% end %>
+
+<form action="/users/:id/edit" method="post">
+<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+<table>
+	<tr>
+		<td>First Name</td>
+		<td><input type='text' name='user[first_name]' value="<%= @one_user.first_name %>"/></td>
+	</tr>
+	<tr>
+		<td>Last Name</td>
+		<td><input type='text' name='user[last_name]' value="<%= @one_user.last_name %>"/></td>
+	</tr>
+	<tr>
+		<td>Email</td>
+		<td><input type='text' name='user[email]' value="<%= @one_user.email %>"/></td>
+	</tr>
+	<tr>
+		<td>Password</td>
+		<td><input type='text' name='user[password]' value="<%= @one_user.password %>"/></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td><input type="submit" value="Edit the User Information"></td>
+	</tr>
+</table>
+</form>

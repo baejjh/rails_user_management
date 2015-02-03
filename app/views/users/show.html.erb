@@ -1,0 +1,18 @@
+<h1>Show User Data</h1>
+<table>
+	<tr>
+		<td>First Name</td>
+		<td><%= @one_user.first_name %></td>
+	</tr>
+	<tr>
+		<td>Last Name</td>
+		<td><%= @one_user.last_name %></td>
+	</tr>
+	<tr>
+		<td>Email</td>
+		<td><%= @one_user.email %></td>
+	</tr>
+</table>
+
+<a href="/">Go Back to Main Page</a>
+<a href="/users/<%= @one_user.id %>/edit">Edit</a>

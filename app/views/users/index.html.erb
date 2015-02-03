@@ -1,17 +1,35 @@
-<h1>Listing Users</h1>
+<h1>All Users</h1>
 <a href="/users/new">Enter a New User</a>
+
+<% if flash[:delete_success] %>
+	<%= flash[:delete_success] %>
+<% end %>
+
+<% if flash[:delete_error] %>
+	<% if flash[:delete_error].each do |error| %>
+			<div><%= error %></div>
+		<% end %>
+	<% end %>
+<% end %>
+
 
 <table>
 	<tr>	
 		<td>First Name</td>
 		<td>Last Name</td>
 		<td>Email</td>
+		<td>Actions</td>
 	</tr>
 	<% @users.each do |one_user| %>
 	<tr>
 		<td><%= one_user.first_name %></td>
 		<td><%= one_user.last_name %></td>
 		<td><%= one_user.email %></td>
+		<td>
+			<a href="/users/<%= one_user.id %>">Show</a>
+			<a href="/users/<%= one_user.id %>/edit">Edit</a>
+			<a href="/users/<%= one_user.id %>" method="delete">Delete</a>
+		</td>
 	</tr>
 	<% end %>
 </table>
