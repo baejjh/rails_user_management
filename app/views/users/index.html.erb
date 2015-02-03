@@ -12,7 +12,7 @@
 <% end %>
 
 <a href="/users/new">Enter a New User</a>
-<table>
+<table class='table table-striped'>
 	<tr>	
 		<td>First Name</td>
 		<td>Last Name</td>
@@ -27,11 +27,15 @@
 		<td>
 			<a href="/users/<%= one_user.id %>">Show</a>
 			<a href="/users/<%= one_user.id %>/edit">Edit</a>
-			<%= button_to "delete", {
-					:controller => :users,
-      				:action => 'destroy',
-      				:id => one_user.id },
-      			:method => :delete %>
+			<%= button_to "delete",
+				{
+					:controller 	=> :users,
+      				:action 		=> 'destroy',
+      				:id 			=> one_user.id
+      			},
+      				:method 		=> :delete,
+      				:class 			=> "btn btn_success"
+      		%>
 		</td>
 	</tr>
 	<% end %>
