@@ -43,12 +43,13 @@ class UsersController < ApplicationController
 
     #post/put
     def destroy
-        @delete_user = User.destroy( id_params )
+        @delete_user = User.find( id_params )
             # User.find(15).destroy
             # User.destroy(15)
             # User.where(:age => 15).destroy_all
             # User.destroy_all(:age => 15)
-        if @delete_user.save
+        if @delete_user.present?
+            @delete_user.destroy
             flash[:delete_success] = "You have successfully deleted the user"
         else
             flash[:delete_error] = @delete_user.errors.full_messages
