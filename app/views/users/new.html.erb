@@ -1,0 +1,35 @@
+<h1>Enter a New User</h1>
+<a href="/">Go back to the main page</a>
+
+<% if flash[:register_error] %>
+	<% if flash[:register_error].each do |error| %>
+			<div><%= error %></div>
+		<% end %>
+	<% end %>
+<% end %>
+
+<form action="/users/create" method="post">
+<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+<table>
+	<tr>
+		<td>First Name</td>
+		<td><input type='text' name='user[first_name]' /></td>
+	</tr>
+	<tr>
+		<td>Last Name</td>
+		<td><input type='text' name='user[last_name]' /></td>
+	</tr>
+	<tr>
+		<td>Email</td>
+		<td><input type='text' name='user[email]' /></td>
+	</tr>
+	<tr>
+		<td>Password</td>
+		<td><input type='password' name='user[password]' /></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td><input type="submit" value="Create"></td>
+	</tr>
+</table>
+</form>

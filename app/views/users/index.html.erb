@@ -1,0 +1,17 @@
+<h1>Listing Users</h1>
+<a href="/users/new">Enter a New User</a>
+
+<table>
+	<tr>	
+		<td>First Name</td>
+		<td>Last Name</td>
+		<td>Email</td>
+	</tr>
+	<% @users.each do |one_user| %>
+	<tr>
+		<td><%= one_user.first_name %></td>
+		<td><%= one_user.last_name %></td>
+		<td><%= one_user.email %></td>
+	</tr>
+	<% end %>
+</table>
