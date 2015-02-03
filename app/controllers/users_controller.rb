@@ -36,8 +36,8 @@ class UsersController < ApplicationController
         if @update_user
             redirect_to '/'
         else
-            flash[:edit_error] = @update_user.errors.full_messages
-            redirect_to '/users/:id/edit'
+            flash[:edit_error] = "Unsuccessful update: please complete all fields."
+            redirect_to '/users/'+id_params+'/edit'
         end
     end
 

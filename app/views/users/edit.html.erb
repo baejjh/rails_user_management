@@ -1,13 +1,6 @@
 <h1>Enter a New User</h1>
 <a href="/">Go back to the main page</a>
 
-<% if flash[:edit_error] %>
-	<% if flash[:edit_error].each do |error| %>
-			<div><%= error %></div>
-		<% end %>
-	<% end %>
-<% end %>
-
 <form action="/users/<%= @one_user.id %>" method="post">
 <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 <input name="_method" type="hidden" value="patch" />
@@ -34,3 +27,7 @@
 	</tr>
 </table>
 </form>
+
+<% if flash[:edit_error] %>
+	<div><%= flash[:edit_error] %></div>
+<% end %>
