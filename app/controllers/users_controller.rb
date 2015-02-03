@@ -31,7 +31,7 @@ class UsersController < ApplicationController
 
     #post/put
     def update
-        @update_user = User.update( user_params ).where( id_params )
+        @update_user = User.find( id_params ).update( user_params )
         if @update_user.save
             redirect_to '/'
         else

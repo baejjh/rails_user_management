@@ -28,7 +28,11 @@
 		<td>
 			<a href="/users/<%= one_user.id %>">Show</a>
 			<a href="/users/<%= one_user.id %>/edit">Edit</a>
-			<a href="/users/<%= one_user.id %>" method="delete">Delete</a>
+			<form action="/users/:id" method="post">
+				<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+				<input name="_method" type="hidden" value="destroy" />
+				<input type="button" href="/users/<%= one_user.id %>" method="post" value="Delete">
+			</form>
 		</td>
 	</tr>
 	<% end %>
