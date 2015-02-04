@@ -25,17 +25,25 @@
 		<td><%= one_user.last_name %></td>
 		<td><%= one_user.email %></td>
 		<td>
-			<a href="/users/<%= one_user.id %>">Show</a>
-			<a href="/users/<%= one_user.id %>/edit">Edit</a>
-			<%= button_to "delete",
-				{
+			<a class="btn btn-success" href="/users/<%= one_user.id %>">Show</a>
+			<a class="btn btn-warning" href="/users/<%= one_user.id %>/edit">Edit</a>
+			<form action="/users/<%= one_user.id %>" method="post">
+				<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+				<input name="_method" type="hidden" value="delete">
+				<input type="submit" class="btn btn-danger" value="Delete">
+			</form>
+			<!--
+			Or can be done but bootstrap does not work:
+			%= button_to "delete",{
 					:controller 	=> :users,
       				:action 		=> 'destroy',
       				:id 			=> one_user.id
-      			},
+      			}, {
       				:method 		=> :delete,
-      				:class 			=> "btn btn_primary"
-      		%>
+      			    :class 			=> ""
+      			}
+      		%
+      		-->
 		</td>
 	</tr>
 	<% end %>
